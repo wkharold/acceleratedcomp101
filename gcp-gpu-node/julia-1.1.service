@@ -1,0 +1,8 @@
+[Unit]
+Description = install Julia 1.1
+After = multi-user.target
+
+[Service]
+ExecStartPre = /usr/bin/wget --directory-prefix /tmp https://julialang-s3.julialang.org/bin/linux/x64/1.1/julia-1.1.0-linux-x86_64.tar.gz
+ExecStart = /bin/tar zxf /tmp/julia-1.1.0-linux-x86_64.tar.gz --directory /opt/julia
+ExecStartPost = /usr/bin/ln -s /opt/julia/julia-1.1.0/bin/julia /usr/local/bin/julia

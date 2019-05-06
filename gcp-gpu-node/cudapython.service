@@ -1,0 +1,5 @@
+[Unit]
+Description = install Python CUDA components
+
+[Service]
+ExecStart = /opt/anaconda3/bin/conda install -y numba cudatoolkit

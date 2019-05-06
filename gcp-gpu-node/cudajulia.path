@@ -1,0 +1,5 @@
+[Unit]
+Description = Install Julia CUDA components when /usr/local/bin/julia is available
+
+[Path]
+PathExists = /opt/julia/julia-1.1.0/bin/julia

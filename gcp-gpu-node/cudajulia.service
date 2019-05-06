@@ -1,0 +1,5 @@
+[Unit]
+Description = install Julia CUDA components
+
+[Service]
+ExecStart = /usr/local/bin/julia -e 'using Pkg; Pkg.add("CUDAnative"); Pkg.add("CUDAdrv"); Pkg.add("CuArrays")'

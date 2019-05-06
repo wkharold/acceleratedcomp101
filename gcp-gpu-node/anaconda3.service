@@ -1,0 +1,7 @@
+[Unit]
+Description = install Anaconda toolchain
+After = multi-user.target
+
+[Service]
+ExecStartPre = /usr/bin/wget --directory-prefix /tmp https://repo.anaconda.com/archive/Anaconda3-2018.12-Linux-x86_64.sh
+ExecStart = /bin/bash /tmp/Anaconda3-2018.12-Linux-x86_64.sh -b -p /opt/anaconda3

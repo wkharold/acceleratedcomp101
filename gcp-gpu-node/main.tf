@@ -33,14 +33,41 @@ resource "google_compute_instance" "gpu_node" {
   }
 
   metadata {
-//    startup-script= "${file("startup.sh")}"
     startup-script = <<STARTUP
-${file("${path.module}/setup.sh")}
-${file("${path.module}/cuda.sh")}
-${file("${path.module}/cudapython.sh")}
-${file("${path.module}/julia.sh")}
-${file("${path.module}/kokkos.sh")}
+${file("${path.module}/startup.sh")}
 STARTUP
+
+    anaconda3-unit = <<ANACONDA3UNIT
+${file("${path.module}/anaconda3.service")}
+ANACONDA3UNIT
+
+    cudapython-path = <<CUDAPYTHONPATH
+${file("${path.module}/cudapython.path")}
+CUDAPYTHONPATH
+
+    cudapython-unit = <<CUDAPYTHONUNIT
+${file("${path.module}/cudapython.service")}
+CUDAPYTHONUNIT
+
+    julia-unit = <<JULIAUNIT
+${file("${path.module}/julia-1.1.service")}
+JULIAUNIT
+
+    cudajulia-path = <<CUDAJULIAPATH
+${file("${path.module}/cudajulia.path")}
+CUDAJULIAPATH
+
+    cudajulia-unit = <<CUDAJULIAUNIT
+${file("${path.module}/cudajulia.service")}
+CUDAJULIAUNIT
+
+    kokkos-build= <<KOKKOSBUILD
+${file("${path.module}/buildkokkos.sh")}
+KOKKOSBUILD
+
+    kokkos-unit = <<KOKKOSUNIT
+${file("${path.module}/kokkos.service")}
+KOKKOSUNIT
   }
 
   service_account {
