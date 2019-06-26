@@ -3,5 +3,6 @@ Description = install kokkos library/framework
 After = multi-user.target
 
 [Service]
+Type = oneshot
 ExecStartPre = /usr/bin/git clone https://github.com/kokkos/kokkos.git /opt/kokkos/repo
 ExecStart = /opt/kokkos/buildkokkos.sh

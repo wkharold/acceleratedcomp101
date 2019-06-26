@@ -2,4 +2,5 @@
 Description = install Python CUDA components
 
 [Service]
+Type = oneshot
 ExecStart = /opt/anaconda3/bin/conda install -y numba cudatoolkit
