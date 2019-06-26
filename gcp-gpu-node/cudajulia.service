@@ -2,4 +2,7 @@
 Description = install Julia CUDA components
 
 [Service]
-ExecStart = /usr/local/bin/julia -e 'using Pkg; Pkg.add("CUDAnative"); Pkg.add("CUDAdrv"); Pkg.add("CuArrays")'
+Type=oneshot
+Environment="JULIA_DEPOT_PATH=/opt/julia/julia-1.1.0/share/julia"
+ExecStart = /usr/local/bin/julia -e 'using Pkg; Pkg.add("CUDAnative"); Pkg.add("CUDAdrv"); Pkg.add("CuArrays"); using CUDAnative; using CUDAdrv; using CuArrays;'
+ExecStartPost = /usr/bin/chmod -R a+rw /opt/julia/julia-1.1.0/share/julia
